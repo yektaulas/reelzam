@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Maaş &amp; Kur Hesaplayıcı</title>
+    <link rel="icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
@@ -80,6 +81,10 @@
         --radius-pill: 999px;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       * {
         box-sizing: border-box;
         margin: 0;
@@ -109,6 +114,178 @@
         align-items: center;
       }
 
+      .site-nav {
+        border-radius: 18px;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .menu-toggle {
+        border: none;
+        background: rgba(15, 23, 42, 0.08);
+        border-radius: 12px;
+        padding: 10px 12px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        color: var(--text);
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .menu-toggle:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      .menu-toggle:hover {
+        background: rgba(37, 99, 235, 0.18);
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .hamburger-icon {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .hamburger-icon span {
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 999px;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      .site-nav.open .hamburger-icon span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .site-nav.open .hamburger-icon span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .site-nav.open .hamburger-icon span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+
+      .menu-label {
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .nav-drawer {
+        position: fixed;
+        top: 24px;
+        left: 16px;
+        width: auto;
+        height: auto;
+        background: var(--card);
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18);
+        transform: translateX(-120%);
+        transition: transform 0.35s ease;
+        z-index: 1000;
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-drawer.open {
+        transform: translateX(0);
+      }
+
+      .nav-drawer-header {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        justify-content: space-between;
+      }
+
+      .nav-drawer h2 {
+        font-size: 1.1rem;
+        margin: 0;
+        color: var(--text);
+      }
+
+      .drawer-close {
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        font-size: 0.85rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .drawer-close:hover,
+      .drawer-close:focus-visible {
+        color: var(--accent);
+      }
+
+      .nav-drawer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-weight: 600;
+      }
+
+      .nav-drawer a {
+        text-decoration: none;
+        color: var(--text);
+        border-radius: var(--radius-pill);
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .nav-drawer a:hover,
+      .nav-drawer a:focus-visible {
+        background: rgba(37, 99, 235, 0.12);
+        color: var(--accent);
+      }
+
+      .nav-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.45);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+        z-index: 900;
+      }
+
+      .nav-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media (max-width: 600px) {
+        .nav-drawer {
+          width: auto;
+          height: auto;
+          top: 16px;
+          left: 16px;
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+
       .main-card {
         width: 100%;
         max-width: 1100px;
@@ -118,6 +295,87 @@
         padding: 26px 26px 24px;
         backdrop-filter: blur(10px);
         margin-bottom: 56px;
+      }
+
+      .info-card {
+        margin-top: 18px;
+      }
+
+      .info-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+
+      .info-card p {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .info-card p + p {
+        margin-top: 10px;
+      }
+
+      .contact-list {
+        list-style: none;
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.88rem;
+      }
+
+      .contact-list strong {
+        color: var(--text);
+      }
+
+      .contact-list a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .contact-list a:hover {
+        text-decoration: underline;
+      }
+
+      .policy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .policy-card {
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 12px;
+        font-size: 0.85rem;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      footer {
+        width: 100%;
+        max-width: 1100px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 18px;
+        padding: 18px;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
+      }
+
+      footer a {
+        color: #c7d2fe;
+        text-decoration: underline;
+      }
+
+      footer small {
+        display: block;
+        margin-top: 6px;
+        color: rgba(248, 250, 252, 0.75);
       }
 
       .footer-note {
@@ -163,6 +421,7 @@
       header {
         text-align: center;
         margin-bottom: 48px;
+        width: 100%;
       }
 
       header h1 {
@@ -508,7 +767,7 @@
       .rate-status-text {
         font-size: 0.6rem;
         color: var(--muted);
-        text-align: right;
+        text-align: left;
         flex: 1;
       }
 
@@ -544,13 +803,41 @@
         font-size: 0.78rem;
         color: #6b7280;
         font-weight: 600;
+      }
+      th.center {
         text-align: center;
+      }
+      th.left {
+        text-align: left;
       }
 
       td.metric {
         font-weight: 500;
         color: #111827;
         white-space: nowrap;
+      }
+
+      .amount-col {
+        text-align: left;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .amount-col strong {
+        color: var(--text);
+      }
+
+      .amount-col.amount-red {
+        color: var(--danger);
+      }
+
+      .amount-col.amount-green {
+        color: var(--accent2);
+      }
+
+      .amount-col.amount-red strong,
+      .amount-col.amount-green strong {
+        color: inherit;
       }
 
       td.center {
@@ -684,19 +971,97 @@
           margin-top: 4px;
         }
       }
+      /* Disclaimer modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(2, 6, 23, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1200;
+        padding: 20px;
+      }
+
+      .modal-overlay.open {
+        display: flex;
+      }
+
+      .modal-card {
+        background: var(--card);
+        border-radius: 14px;
+        max-width: 720px;
+        width: 100%;
+        padding: 18px;
+        box-shadow: var(--shadow-card);
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .info-text {
+        font-size: 0.78rem;
+        color: var(--accent);
+        text-align: end;
+        cursor: pointer;
+        text-decoration: underline;
+        margin-top: 12px;
+      }
+      .info-text :hover {
+        color: #1e40af;
+      }
     </style>
   </head>
   <body>
     <div class="app">
       <header>
+        <nav class="site-nav" aria-label="Site navigasyonu">
+          <button
+            id="menuToggle"
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navDrawer"
+          >
+            <span class="hamburger-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </nav>
         <h1>Maaşını Enflasyon ve Dövize Göre Karşılaştır</h1>
         <p>
           Teklif edilen maaşın gerçek değerini Euro, Dolar ve Enflasyon'a göre
           hemen hesapla.
         </p>
       </header>
+
+      <div
+        id="navDrawer"
+        class="nav-drawer"
+        role="dialog"
+        aria-modal="false"
+        aria-hidden="true"
+      >
+        <div class="nav-drawer-header">
+          <h2>Site Menüsü</h2>
+          <button id="drawerClose" class="drawer-close" type="button">X</button>
+        </div>
+        <ul>
+          <li><a href="#calculator">Hesaplayıcı</a></li>
+          <li><a href="#about">Hakkında</a></li>
+          <li><a href="#contact">İletişim</a></li>
+          <li><a href="#policies">Politikalar</a></li>
+        </ul>
+      </div>
+      <div id="navOverlay" class="nav-overlay" hidden></div>
+
       <!-- İÇERİK GRIDİ -->
-      <main class="main-card" role="main">
+      <main id="calculator" class="main-card" role="main">
         <div class="content-grid">
           <!-- Salary & Inflation -->
           <section class="card form-card">
@@ -746,7 +1111,13 @@
                 </label>
                 <div class="input-with-prefix">
                   <span class="prefix">%</span>
-                  <input id="inflation" type="number" min="0" step="0.1" />
+                  <input
+                    id="inflation"
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    value="31.07"
+                  />
                 </div>
               </div>
               <div class="field">
@@ -757,11 +1128,15 @@
                 <div id="calcError" class="error-text"></div>
               </div>
             </div>
+            <div id="rateStatus" class="rate-status-text">
+              * Yukarıdaki yıllık enflasyon değeri TUİK tarafından
+              sağlanmaktadır.
+            </div>
           </section>
           <section class="card rates-card">
             <h2
-              title="EUR/USD çapraz kurunu ve EUR/TRY – USD/TRY değerlerini, geçen yıl
-              ortalamasıyla birlikte gösterir."
+              title="EUR/USD çapraz kurunu ve EUR/TRY – USD/TRY değerlerini, son 12 ay
+                ortalamasıyla birlikte gösterir."
             >
               Kur Bilgileri
             </h2>
@@ -775,7 +1150,7 @@
                 <div id="eurTryNowValue" class="rate-value">–</div>
                 <div class="rate-sub">
                   <span>
-                    Geçen yıl ort.: <span id="eurTryLastValue">–</span><br
+                    Son 12 ay ort.: <span id="eurTryLastValue">–</span><br
                   /></span>
                   <span id="eurTryChangeText" class="change"></span>
                 </div>
@@ -789,7 +1164,7 @@
                 <div id="usdTryNowValue" class="rate-value">–</div>
                 <div class="rate-sub">
                   <span
-                    >Geçen yıl ort.: <span id="usdTryLastValue">–</span><br
+                    >Son 12 ay ort.: <span id="usdTryLastValue">–</span><br
                   /></span>
                   <span id="usdTryChangeText" class="change"></span>
                 </div>
@@ -810,14 +1185,13 @@
               Reel Alım Gücü Tablosu
             </h2>
 
-            <table
-              title="Tabloyu görmek için üstte maaş bilgilerini doldur ve sağdaki “Hesapla” butonuna bas."
-            >
+            <table>
               <thead>
                 <tr>
                   <th>Metrik</th>
                   <th class="center col-nominal">Nominal Zam %</th>
                   <th class="center col-real">Reel Zam %</th>
+                  <th class="amount-col">Miktar Farkı</th>
                   <th class="center">Reel Fark</th>
                   <th>Açıklama</th>
                 </tr>
@@ -829,6 +1203,7 @@
                     –
                   </td>
                   <td class="center col-real" id="inflationRealCell">–</td>
+                  <td class="amount-col" id="inflationAmountCell">–</td>
                   <td class="center" id="inflationBadgeCell">–</td>
                   <td id="inflationHelperCell">
                     <span class="diff-text">Henüz hesaplanmadı.</span>
@@ -838,6 +1213,7 @@
                   <td class="metric">USD / TRY</td>
                   <td class="center col-nominal" id="usdNominalCell">–</td>
                   <td class="center col-real" id="usdRealCell">–</td>
+                  <td class="amount-col" id="usdAmountCell">–</td>
                   <td class="center" id="usdBadgeCell">–</td>
                   <td id="usdHelperCell">
                     <span class="diff-text">Henüz hesaplanmadı.</span>
@@ -847,6 +1223,7 @@
                   <td class="metric">EUR / TRY</td>
                   <td class="center col-nominal" id="eurNominalCell">–</td>
                   <td class="center col-real" id="eurRealCell">–</td>
+                  <td class="amount-col" id="eurAmountCell">–</td>
                   <td class="center" id="eurBadgeCell">–</td>
                   <td id="eurHelperCell">
                     <span class="diff-text">Henüz hesaplanmadı.</span>
@@ -859,37 +1236,102 @@
             </p>
           </section>
         </div>
+        <section id="about" class="card info-card">
+          <h2 style="margin-bottom: 16px">Uygulama Hakkında</h2>
+
+          <p>
+            Maaş &amp; Kur Hesaplayıcı, iş arayanlar ve şirket içi teklif alan
+            profesyoneller için reel maaş değerlendirmesini kolaylaştırmak üzere
+            tasarlandı.İçerik düzenli aralıklarla güncellenir, kullanıcıya açık
+            ve faydalı bir finans aracı sunulur. Kur verileri ECB kaynaklı
+            Frankfurter API üzerinden saniyeler içinde çekilir, hiçbir kullanıcı
+            verisi sunucuda tutulmaz.
+          </p>
+        </section>
+        <section id="contact" class="card info-card">
+          <h2 style="margin-bottom: 16px">İletişim</h2>
+          <p>
+            Uygulamanın geliştiricisine iyileştirme önerisi, işbirliği veya
+            hukuki bildirim için aşağıdaki kanallardan ulaşabilirsiniz.
+          </p>
+          <ul class="contact-list">
+            <li>
+              <strong>E-posta:</strong>
+              <a href="mailto:yekta.ulas97@gmail.com">yekta.ulas97@gmail.com</a>
+            </li>
+            <li>
+              <strong>GitHub:</strong>
+              <a
+                href="https://github.com/yektaulas"
+                target="_blank"
+                rel="noopener noreferrer"
+                >github.com/yektaulas</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section id="policies" class="card info-card">
+          <h2>Politikalar</h2>
+          <div class="policy-grid">
+            <div class="policy-card">
+              <strong>Gizlilik</strong>
+              <p>
+                Bu araç çerez kullanmaz, kişisel veri toplamaz veya üçüncü
+                taraflarla paylaşmaz. Hesaplamalar tarayıcınızda gerçekleşir.
+              </p>
+            </div>
+            <div class="policy-card">
+              <strong>Kullanım Şartları</strong>
+              <p>
+                Sonuçlar bilgilendirme amaçlıdır; finansal tavsiye yerine
+                geçmez. Kullanıcı, ortaya çıkabilecek kararlardan kendisi
+                sorumludur.
+              </p>
+            </div>
+          </div>
+        </section>
+        <div id="disclaimerBtn" class="info-text">Sorumluluk Reddi Beyanı</div>
       </main>
-      <footer class="footer-note">
-        <a
-          class="made-by-link"
-          href="https://github.com/yektaulas"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Made with
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 640 640"
-            fill="#E90606"
-          >
-            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-            <path
-              d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"
-            />
-          </svg>
-          by Yekta Ulaş
-        </a>
-        <div style="font-size: 4px; margin-top: 4px">
-          Bg image:
+      <footer>
+        <div>
+          © <span id="footerYear"></span> Made with
+          <span style="color: #e0245e">&#10084;</span> by yektaulas
+        </div>
+        <div style="font-size: 8px; margin-top: 8px">
+          Arka plan Görseli:
           <a
             href="http://www.freepik.com"
             target="_blank"
             rel="noopener noreferrer"
-            >Designed by Layerace / Freepik</a
+            >Layerace / Freepik</a
           >
         </div>
       </footer>
+    </div>
+
+    <!-- Disclaimer modal -->
+    <div
+      id="disclaimerOverlay"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+    >
+      <div class="modal-card" role="document">
+        <h3 style="margin-bottom: 8px">Bilgilendirme</h3>
+        <div style="color: var(--muted); font-size: 0.95rem; line-height: 1.4">
+          Bu uygulama yalnızca bilgilendirme amaçlıdır. Sağlanan veriler ve
+          hesaplamalar yaklaşık olup gerçeği tam olarak yansıtmayabilir.
+          Hesaplama sonuçları kesin finansal tavsiye yerine geçmez; yasal veya
+          mali sorumluluk doğurmaz. Lütfen önemli kararlar öncesinde resmi
+          kaynaklara ve bir uzmana danışın.
+        </div>
+        <div class="modal-actions">
+          <button id="disclaimerClose" class="rate-fetch-btn" type="button">
+            Anladım
+          </button>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -899,6 +1341,14 @@
         // Elements
         const $ = (id) => document.getElementById(id);
 
+        const DEFAULT_INFLATION = 31.07;
+        const AMOUNT_RED_CLASS = 'amount-red';
+        const AMOUNT_GREEN_CLASS = 'amount-green';
+        const footerYearEl = $('footerYear');
+        const menuToggle = $('menuToggle');
+        const navDrawer = $('navDrawer');
+        const navOverlay = $('navOverlay');
+        const drawerClose = $('drawerClose');
         const currentSalaryInput = $('currentSalary');
         const proposedSalaryInput = $('proposedSalary');
         const inflationInput = $('inflation');
@@ -914,15 +1364,65 @@
         const inflationNominalCell = $('inflationNominalCell');
         const inflationRealCell = $('inflationRealCell');
         const inflationBadgeCell = $('inflationBadgeCell');
+        const inflationAmountCell = $('inflationAmountCell');
         const inflationHelperCell = $('inflationHelperCell');
         const usdNominalCell = $('usdNominalCell');
         const usdRealCell = $('usdRealCell');
         const usdBadgeCell = $('usdBadgeCell');
+        const usdAmountCell = $('usdAmountCell');
         const usdHelperCell = $('usdHelperCell');
         const eurNominalCell = $('eurNominalCell');
         const eurRealCell = $('eurRealCell');
         const eurBadgeCell = $('eurBadgeCell');
+        const eurAmountCell = $('eurAmountCell');
         const eurHelperCell = $('eurHelperCell');
+
+        if (footerYearEl) {
+          footerYearEl.textContent = new Date().getFullYear();
+        }
+
+        function setNavState(open) {
+          if (!menuToggle || !navDrawer || !navOverlay) return;
+          menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          navDrawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+          navDrawer.classList.toggle('open', open);
+          navOverlay.classList.toggle('active', open);
+          navOverlay.hidden = !open;
+          const navElement = menuToggle.closest('.site-nav');
+          if (navElement) navElement.classList.toggle('open', open);
+        }
+
+        function toggleNav() {
+          const isOpen = navDrawer?.classList.contains('open');
+          setNavState(!isOpen);
+        }
+
+        if (menuToggle) {
+          menuToggle.addEventListener('click', toggleNav);
+        }
+
+        if (drawerClose) {
+          drawerClose.addEventListener('click', () => setNavState(false));
+        }
+
+        if (navOverlay) {
+          navOverlay.addEventListener('click', () => setNavState(false));
+        }
+
+        if (navDrawer) {
+          navDrawer.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => setNavState(false));
+          });
+        }
+
+        if (inflationInput) {
+          inflationInput.value = DEFAULT_INFLATION.toFixed(2);
+        }
+        if (inflationHelperCell) {
+          inflationHelperCell.innerHTML = `<span class="diff-text">TÜİK enflasyonu %${DEFAULT_INFLATION.toFixed(
+            2
+          )}</span>`;
+        }
 
         // Formatting helpers for salary inputs (thousands separator with dots)
         function sanitizeToDigits(s) {
@@ -1031,6 +1531,50 @@
           );
         }
 
+        const UNIT_TEXT_MAP = {
+          TRY: '₺',
+          USD: '$',
+          EUR: '€',
+        };
+
+        function formatAmountValue(value) {
+          if (!isFinite(value)) return null;
+          return value.toLocaleString('tr-TR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          });
+        }
+
+        function getUnitText(unit) {
+          return UNIT_TEXT_MAP[unit] || unit || '';
+        }
+
+        function setAmountCell(
+          cell,
+          prevValue,
+          newValue,
+          unit,
+          context = 'fx'
+        ) {
+          if (!cell) return;
+          cell.classList.remove(AMOUNT_RED_CLASS, AMOUNT_GREEN_CLASS);
+          const prevText = formatAmountValue(prevValue);
+          const newText = formatAmountValue(newValue);
+          if (!prevText || !newText) {
+            cell.textContent = '–';
+            return;
+          }
+          const unitText = getUnitText(unit);
+          const sentence =
+            context === 'inflation'
+              ? `${prevText} ${unitText} → ${newText} ${unitText}.`
+              : `${prevText} ${unitText} → ${newText} ${unitText}.`;
+          const className =
+            newValue > prevValue ? AMOUNT_GREEN_CLASS : AMOUNT_RED_CLASS;
+          cell.classList.add(className);
+          cell.innerHTML = sentence;
+        }
+
         function setRateStatus(text, type) {
           rateStatus.textContent = text;
           rateStatus.classList.remove('error', 'ok');
@@ -1052,9 +1596,9 @@
           const cls = isTryGained ? 'up' : 'down';
           // Wrap the whole sentence so its color follows the up/down class
           if (diff >= 0) {
-            return `<span class="${cls}">${arrow} TL geçen yıl %${absVal} değer kaybetti</span>`;
+            return `<span class="${cls}">${arrow} TL son 12 ayda %${absVal} değer kaybetti</span>`;
           }
-          return `<span class="${cls}">${arrow} TL geçen yıl %${absVal} değer kazandı</span>`;
+          return `<span class="${cls}">${arrow} TL son 12 ayda %${absVal} değer kazandı</span>`;
         }
 
         async function fetchRates() {
@@ -1062,10 +1606,11 @@
             setRateStatus('Kurlar çekiliyor...', '');
 
             const now = new Date();
-            const currentYear = now.getFullYear();
-            const previousYear = currentYear - 1;
-            const start = `${previousYear}-01-01`;
-            const end = `${previousYear}-12-31`;
+            // Use the last 12 months: from (today - 1 year) to today
+            const end = now.toISOString().slice(0, 10);
+            const startDate = new Date(now);
+            startDate.setFullYear(startDate.getFullYear() - 1);
+            const start = startDate.toISOString().slice(0, 10);
 
             // Güncel EUR->TRY,USD
             const latestResp = await fetch(
@@ -1083,7 +1628,7 @@
 
             const usdTryLatest = eurTryLatest / eurUsdLatest;
 
-            // Geçen yıl zaman serisi EUR->TRY,USD
+            // Son 12 ay zaman serisi EUR->TRY,USD
             const histResp = await fetch(
               `${apiBase}/${start}..${end}?from=EUR&to=TRY,USD`
             );
@@ -1130,10 +1675,6 @@
             usdTryLastValue.textContent = usdLastAvg.toFixed(4);
             const usdDiffPct = ((usdTryLatest - usdLastAvg) / usdLastAvg) * 100;
             usdTryChangeText.innerHTML = formatChangeText('artış', usdDiffPct);
-            setRateStatus(
-              `Kurlar yüklendi · yıl: ${previousYear} ortalaması & bugün`,
-              'ok'
-            );
 
             // Persist to session storage
             saveRatesToSession();
@@ -1260,6 +1801,14 @@
           const nominalRaise =
             ((proposedSalary - currentSalary) / currentSalary) * 100;
 
+          setAmountCell(
+            inflationAmountCell,
+            currentSalary,
+            proposedSalary,
+            'TRY',
+            'inflation'
+          );
+
           // Enflasyon satırı
           inflationNominalCell.textContent = formatPercent(nominalRaise);
 
@@ -1286,6 +1835,7 @@
 
           usdNominalCell.textContent = formatPercent(nominalRaise);
           usdRealCell.textContent = formatPercent(realRaiseUsd);
+          setAmountCell(usdAmountCell, usdCurrentOld, usdOfferNow, 'USD');
           setDiffCell('USD', realRaiseUsd);
 
           // EUR satırı
@@ -1299,6 +1849,7 @@
 
           eurNominalCell.textContent = formatPercent(nominalRaise);
           eurRealCell.textContent = formatPercent(realRaiseEur);
+          setAmountCell(eurAmountCell, eurCurrentOld, eurOfferNow, 'EUR');
           setDiffCell('EUR', realRaiseEur);
         }
 
@@ -1345,6 +1896,35 @@
           } finally {
             calculateBtn.disabled = false;
             calculateBtn.innerHTML = originalContent;
+          }
+        });
+
+        // Disclaimer modal behavior
+        const disclaimerBtn = $('disclaimerBtn');
+        const disclaimerOverlay = $('disclaimerOverlay');
+        const disclaimerClose = $('disclaimerClose');
+
+        function openDisclaimer() {
+          if (!disclaimerOverlay) return;
+          disclaimerOverlay.classList.add('open');
+          disclaimerOverlay.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeDisclaimer() {
+          if (!disclaimerOverlay) return;
+          disclaimerOverlay.classList.remove('open');
+          disclaimerOverlay.setAttribute('aria-hidden', 'true');
+        }
+
+        if (disclaimerBtn)
+          disclaimerBtn.addEventListener('click', openDisclaimer);
+        if (disclaimerClose)
+          disclaimerClose.addEventListener('click', closeDisclaimer);
+        // Close on ESC
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape') {
+            closeDisclaimer();
+            setNavState(false);
           }
         });
       })();
