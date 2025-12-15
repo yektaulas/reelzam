@@ -584,7 +584,15 @@ document.querySelectorAll('.buttonTrigger').forEach(attachMenuEvent);
 function attachMenuEvent(menuButton) {
   menuButton.addEventListener('click', function (e) {
     e.preventDefault();
-    this.parentElement.classList.toggle('active');
+    const container = this.parentElement;
+    const willBeCollapsed = !container.classList.contains('active');
+
+    container.classList.toggle('active');
     this.classList.toggle('active');
+
+    // Update tooltip text to reflect the next action
+    // Collapsed -> show only trigger -> clicking should "Göster"
+    // Expanded -> clicking should "Gizle"
+    this.setAttribute('data-tooltip', willBeCollapsed ? 'Göster' : 'Gizle');
   });
 }

@@ -1064,11 +1064,20 @@ body::-webkit-scrollbar-thumb {
     left: -6px;
   }
   .fixedSidebar.fixedSidebarLeft .buttonTrigger.active {
-    left: 97px !important;
+    left: 0 !important;
   }
 }
 .fixedSidebar.fixedSidebarLeft.active {
-  left: -75px;
+  left: 0;
+  width: 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.fixedSidebar.fixedSidebarLeft.active .sidebarItem {
+  opacity: 0;
+  pointer-events: none;
 }
 .fixedSidebar.fixedSidebarLeft .sidebarItem {
   position: relative;
