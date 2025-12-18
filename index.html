@@ -183,6 +183,11 @@
           hemen hesapla.
         </p>
       </header>
+      <!--
+      <aside class="ad-slot ad-slot-hero" aria-label="Reklam alanı">
+        Adsense manuel reklam kodunu buraya yerleştirin
+      </aside>
+      -->
 
       <div
         id="navDrawer"
@@ -197,9 +202,15 @@
         </div>
         <ul>
           <li><a href="#calculator">Hesaplayıcı</a></li>
+          <li><a href="#how-it-works">Nasıl Çalışır?</a></li>
+          <li><a href="#method">Hesaplama Yöntemi</a></li>
+          <li><a href="#faq">SSS</a></li>
           <li><a href="#about">Hakkında</a></li>
           <li><a href="#contact">İletişim</a></li>
           <li><a href="#policies">Politikalar</a></li>
+          <li><a href="about.html">Uygulama Sayfası</a></li>
+          <li><a href="privacy.html">Gizlilik</a></li>
+          <li><a href="terms.html">Kullanım Şartları</a></li>
         </ul>
       </div>
       <div id="navOverlay" class="nav-overlay" hidden></div>
@@ -269,9 +280,9 @@
                 <button id="calculateBtn" class="calculate-btn">
                   <span>Hesapla</span>
                 </button>
-                <div id="calcError" class="error-text"></div>
               </div>
             </div>
+            <div id="calcError" class="error-text"></div>
             <div id="rateStatus" class="rate-status-text">
               * Yukarıdaki yıllık enflasyon değeri TUİK tarafından
               sağlanmaktadır.
@@ -380,6 +391,11 @@
             </p>
           </section>
         </div>
+        <!--
+        <aside class="ad-slot ad-slot-between" aria-label="Reklam alanı">
+          Adsense manuel reklam kodunu buraya yerleştirin
+        </aside>
+        -->
         <section id="about" class="card info-card">
           <h2 style="margin-bottom: 16px">Uygulama Hakkında</h2>
 
@@ -391,6 +407,90 @@
             Frankfurter API üzerinden saniyeler içinde çekilir, hiçbir kullanıcı
             verisi sunucuda tutulmaz.
           </p>
+        </section>
+        <section id="how-it-works" class="card info-card longform">
+          <h2>Nasıl Çalışır?</h2>
+          <p>
+            Bu araç, teklif edilen maaşı yalnızca nominal artışa göre değil;
+            enflasyon ve döviz kurlarındaki değişime göre de değerlendirir.
+            Böylece “kağıt üzerinde” iyi görünen bir teklifin reel alım gücü
+            açısından gerçekten avantajlı olup olmadığını hızlıca
+            görebilirsiniz.
+          </p>
+          <p>
+            Hesaplamalar tarayıcınızda yapılır. Sunucu tarafına kişisel veri
+            gönderilmez ve hiçbir giriş bilgisi kaydedilmez. Tek amaç, maaş
+            değişimini anlaşılır ve şeffaf şekilde karşılaştırmaktır.
+          </p>
+          <h3>Özet Adımlar</h3>
+          <ol class="info-steps">
+            <li>
+              Mevcut ve teklif edilen maaşı girin; sistem nominal zam oranını
+              hesaplar.
+            </li>
+            <li>
+              Yıllık enflasyon oranı ile reel artış/azalış karşılaştırması
+              yapılır.
+            </li>
+            <li>
+              EUR/TRY ve USD/TRY yıllık ortalamaları ile kur etkisi hesaplanır.
+            </li>
+          </ol>
+          <h3 id="method">Hesaplama Yöntemi</h3>
+          <p>
+            Nominal zam oranı, teklif edilen maaşın mevcut maaşa göre yüzdesel
+            farkıdır. Reel zam ise bu nominal artışın enflasyondan arındırılmış
+            halini verir. Döviz bazında karşılaştırma yapılırken son 12 ayın
+            ortalama kur değerleri esas alınır. Böylece tek bir günün ani kur
+            değişimi yerine daha dengeli bir kıyaslama yapılır.
+          </p>
+          <ul class="info-list">
+            <li>
+              <strong>Enflasyon etkisi:</strong> Nominal artış – yıllık
+              enflasyon.
+            </li>
+            <li>
+              <strong>USD/EUR etkisi:</strong> Maaşın döviz karşılığındaki
+              değişim.
+            </li>
+            <li>
+              <strong>Veri kaynağı:</strong> ECB Frankfurter API (kur), TÜİK
+              (enflasyon).
+            </li>
+          </ul>
+          <h3>Örnek Senaryo</h3>
+          <p>
+            Örneğin 22.000 TL mevcut maaşınızın 28.000 TL’ye çıktığını düşünün.
+            Nominal artış yaklaşık %27’dir. Ancak aynı dönemde enflasyon %31 ise
+            reel olarak alım gücünüz artmıyor, azalıyor olabilir. Bu araç,
+            enflasyon ve kur etkisini bir arada göstererek “gerçek farkı”
+            sayısallaştırır.
+          </p>
+        </section>
+        <section id="faq" class="card info-card longform">
+          <h2>Sık Sorulan Sorular</h2>
+          <div class="faq-item">
+            <h3>Kur verileri ne kadar güncel?</h3>
+            <p>
+              Kur verileri Frankfurter (ECB) kaynağından çekilir ve sayfayı
+              açtığınızda güncel değerlerle yenilenir. Hesaplamalarda son 12 ay
+              ortalaması kullanılır.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Verilerim sunucuda saklanıyor mu?</h3>
+            <p>
+              Hayır. Maaş bilgileri yalnızca tarayıcıda işlenir, sunucuya
+              gönderilmez veya kaydedilmez.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Hesaplamalar finansal tavsiye midir?</h3>
+            <p>
+              Hayır. Bu araç bilgilendirme amaçlıdır; yasal veya finansal
+              danışmanlık yerine geçmez.
+            </p>
+          </div>
         </section>
         <section id="contact" class="card info-card">
           <h2 style="margin-bottom: 16px">İletişim</h2>
@@ -423,6 +523,7 @@
                 Bu araç çerez kullanmaz, kişisel veri toplamaz veya üçüncü
                 taraflarla paylaşmaz. Hesaplamalar tarayıcınızda gerçekleşir.
               </p>
+              <a href="privacy.html">Gizlilik politikasını oku</a>
             </div>
             <div class="policy-card">
               <strong>Kullanım Şartları</strong>
@@ -431,6 +532,7 @@
                 geçmez. Kullanıcı, ortaya çıkabilecek kararlardan kendisi
                 sorumludur.
               </p>
+              <a href="terms.html">Kullanım şartlarını oku</a>
             </div>
           </div>
         </section>

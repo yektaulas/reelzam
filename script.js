@@ -106,6 +106,14 @@
       const raw = sanitizeToDigits(el.value);
       el.dataset.raw = raw;
       el.value = formatWithDots(raw);
+      // Clear any error highlight when user edits the field
+      try {
+        el.style.boxShadow = '';
+        el.style.borderColor = '';
+        el.classList.remove('input-error');
+      } catch (err) {
+        /* ignore */
+      }
       // move caret to end for simplicity
       try {
         el.setSelectionRange(el.value.length, el.value.length);
@@ -121,6 +129,14 @@
       const raw = sanitizeToDigits(text);
       el.dataset.raw = raw;
       el.value = formatWithDots(raw);
+      // Clear any error highlight after paste
+      try {
+        el.style.boxShadow = '';
+        el.style.borderColor = '';
+        el.classList.remove('input-error');
+      } catch (err) {
+        /* ignore */
+      }
     });
   }
 
@@ -319,7 +335,6 @@
       usdLastAvg = avg(usdTryList);
 
       // Ekrana yaz
-      const eurUsdCross = eurTryLatest / usdTryLatest;
       eurTryNowValue.textContent = eurTryLatest.toFixed(4);
       eurTryLastValue.textContent = eurLastAvg.toFixed(4);
       const eurDiffPct = ((eurTryLatest - eurLastAvg) / eurLastAvg) * 100;
@@ -329,7 +344,7 @@
       usdTryLastValue.textContent = usdLastAvg.toFixed(4);
       const usdDiffPct = ((usdTryLatest - usdLastAvg) / usdLastAvg) * 100;
       usdTryChangeText.innerHTML = formatChangeText('artış', usdDiffPct);
-
+      setRateStatus('');
       // Persist to session storage
       saveRatesToSession();
 
@@ -424,19 +439,76 @@
   }
 
   function calculate() {
+    // clear previous error and highlights
     calcError.textContent = '';
+    try {
+      currentSalaryInput.style.boxShadow = '';
+      currentSalaryInput.style.borderColor = '';
+      currentSalaryInput.classList.remove('input-error');
+    } catch (err) {
+      /* ignore */
+    }
+    try {
+      proposedSalaryInput.style.boxShadow = '';
+      proposedSalaryInput.style.borderColor = '';
+      proposedSalaryInput.classList.remove('input-error');
+    } catch (err) {
+      /* ignore */
+    }
     const currentSalary = getNumberFromFormattedInput(currentSalaryInput);
     const proposedSalary = getNumberFromFormattedInput(proposedSalaryInput);
     const inflation = parseFloat(inflationInput.value);
 
-    if (
-      !isFinite(currentSalary) ||
-      !isFinite(proposedSalary) ||
-      currentSalary <= 0 ||
-      proposedSalary <= 0
-    ) {
+    if (!isFinite(currentSalary)) {
       calcError.textContent =
-        'Lütfen geçerli bir mevcut maaş ve teklif edilen maaş gir.';
+        '* Lütfen mevcut maaşınızı geçerli bir rakam olarak girin.';
+      try {
+        currentSalaryInput.style.borderColor = '#d33';
+        currentSalaryInput.style.boxShadow = '0 0 0 3px rgba(211,51,51,0.12)';
+        currentSalaryInput.classList.add('input-error');
+        currentSalaryInput.focus();
+      } catch (err) {
+        /* ignore */
+      }
+      return;
+    }
+    if (!isFinite(proposedSalary)) {
+      calcError.textContent =
+        '* Lütfen teklif edilen maaşı geçerli bir rakam olarak girin.';
+      try {
+        proposedSalaryInput.style.borderColor = '#d33';
+        proposedSalaryInput.style.boxShadow = '0 0 0 3px rgba(211,51,51,0.12)';
+        proposedSalaryInput.classList.add('input-error');
+        proposedSalaryInput.focus();
+      } catch (err) {
+        /* ignore */
+      }
+      return;
+    }
+    if (proposedSalary <= 0) {
+      calcError.textContent =
+        '* Teklif edilen maaş sıfır olamaz. Lütfen geçerli bir rakam girin.';
+      try {
+        proposedSalaryInput.style.borderColor = '#d33';
+        proposedSalaryInput.style.boxShadow = '0 0 0 3px rgba(211,51,51,0.12)';
+        proposedSalaryInput.classList.add('input-error');
+        proposedSalaryInput.focus();
+      } catch (err) {
+        /* ignore */
+      }
+      return;
+    }
+    if (currentSalary <= 0) {
+      calcError.textContent =
+        '* Mevcut maaş sıfır olamaz. Lütfen geçerli bir rakam girin.';
+      try {
+        currentSalaryInput.style.borderColor = '#d33';
+        currentSalaryInput.style.boxShadow = '0 0 0 3px rgba(211,51,51,0.12)';
+        currentSalaryInput.classList.add('input-error');
+        currentSalaryInput.focus();
+      } catch (err) {
+        /* ignore */
+      }
       return;
     }
 

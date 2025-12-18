@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Uygulama Hakkında - Maaş &amp; Kur Hesaplayıcı</title>
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Maaş & Kur Hesaplayıcı'nın amacı, veri kaynakları ve kullanım kapsamı hakkında ayrıntılı bilgi."
+    />
+    <meta name="author" content="Yekta Ulaş Kesik" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yektaulas.com/maas-kur-hesaplayici/about" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="main-card">
+        <header class="page-header">
+          <h1>Uygulama Hakkında</h1>
+          <p>Maaş tekliflerini reel alım gücüyle değerlendirmek için şeffaf bir araç.</p>
+        </header>
+        <nav class="page-nav" aria-label="Sayfa bağlantıları">
+          <a href="index.html">Hesaplayıcı</a>
+          <a href="privacy.html">Gizlilik</a>
+          <a href="terms.html">Kullanım Şartları</a>
+        </nav>
+        <section class="longform">
+          <h2>Amaç ve Kapsam</h2>
+          <p>
+            Maaş &amp; Kur Hesaplayıcı, iş değiştirme sürecinde alınan maaş
+            tekliflerini sadece nominal artış üzerinden değil, enflasyon ve kur
+            etkisiyle birlikte değerlendirmek için tasarlanmış bir web aracıdır.
+            Böylece kullanıcı, teklifin gerçek alım gücüne etkisini daha net
+            görebilir ve kararını daha sağlıklı temellere dayandırabilir.
+          </p>
+          <p>
+            Uygulama finansal tavsiye vermez; amaç, kamuya açık veri kaynaklarından
+            faydalanarak şeffaf bir karşılaştırma sunmaktır. Hesaplama sonuçları
+            bilgilendirme amaçlıdır ve kullanıcıya yönlendirici bir taahhüt içermez.
+          </p>
+          <h3>Kimler İçin?</h3>
+          <ul class="info-list">
+            <li>Yeni bir iş teklifi alan profesyoneller.</li>
+            <li>Şirket içi zam görüşmesi yapan çalışanlar.</li>
+            <li>Gelirini döviz veya enflasyon bazında kıyaslamak isteyen herkes.</li>
+          </ul>
+          <h3>Veri Kaynakları ve Yöntem</h3>
+          <p>
+            Kur verileri Avrupa Merkez Bankası (ECB) verilerini sunan Frankfurter
+            API üzerinden çekilir. Enflasyon oranı TÜİK verileri temel alınarak
+            kullanıcının belirleyebileceği bir alan olarak sunulur.
+          </p>
+          <p>
+            Kur karşılaştırmaları tek bir günün değerlerine değil, son 12 ayın
+            ortalamasına dayandırılır. Böylece dalgalanmalardan bağımsız, daha
+            dengeli bir kıyaslama sağlanır.
+          </p>
+          <h3>Güncelleme ve Sorumluluk</h3>
+          <p>
+            İçerik ve hesaplama yöntemi belirli aralıklarla güncellenir.
+            Kullanıcıların önemli kararlar öncesinde resmi kaynakları ve
+            uzman görüşlerini dikkate alması önerilir.
+          </p>
+        </section>
+      </main>
+      <footer>
+        <div>
+          © <span id="footerYear"></span> Made with
+          <span style="color: #e0245e">&#10084;</span> by yektaulas
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gizlilik Politikası - Maaş &amp; Kur Hesaplayıcı</title>
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Maaş & Kur Hesaplayıcı gizlilik politikası: veri işleme, çerez ve üçüncü taraf kullanımı hakkında bilgiler."
+    />
+    <meta name="author" content="Yekta Ulaş Kesik" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yektaulas.com/maas-kur-hesaplayici/privacy" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="main-card">
+        <header class="page-header">
+          <h1>Gizlilik Politikası</h1>
+          <p>Bu sayfa, veri kullanımına ve gizliliğe dair şeffaf bir özet sunar.</p>
+        </header>
+        <nav class="page-nav" aria-label="Sayfa bağlantıları">
+          <a href="index.html">Hesaplayıcı</a>
+          <a href="about.html">Uygulama Hakkında</a>
+          <a href="terms.html">Kullanım Şartları</a>
+        </nav>
+        <section class="longform">
+          <h2>Genel İlkeler</h2>
+          <p>
+            Maaş &amp; Kur Hesaplayıcı, kullanıcıların kişisel verilerini
+            toplamak veya saklamak amacıyla tasarlanmamıştır. Uygulama, temel
+            hesaplamaları tarayıcı üzerinde gerçekleştirir ve girilen maaş
+            bilgilerini sunucuya göndermez.
+          </p>
+          <h3>Kişisel Veri İşleme</h3>
+          <p>
+            Bu araç, ad, soyad, e-posta veya kimlik belirleyici herhangi bir
+            kişisel veri talep etmez. Kullanıcının girdiği maaş bilgileri sadece
+            hesaplama yapmak için kullanılır ve tarayıcı kapatıldığında saklı
+            kalmaz.
+          </p>
+          <h3>Çerezler ve Yerel Depolama</h3>
+          <p>
+            Uygulama, işlevsellik için zorunlu olmayan çerezler kullanmaz.
+            Yalnızca kur bilgisinin kısa süreli tutulması için tarayıcı oturum
+            belleği kullanılabilir. Bu veri kişisel değildir ve sayfayı
+            yenilediğinizde yenilenebilir.
+          </p>
+          <h3>Üçüncü Taraf Hizmetleri</h3>
+          <p>
+            Kur verileri Avrupa Merkez Bankası (ECB) verilerini sağlayan
+            Frankfurter API üzerinden alınır. Bu entegrasyon, kullanıcı
+            bilgilerinin paylaşılmasını gerektirmez ve yalnızca kamuya açık
+            finans verileri kullanılır.
+          </p>
+          <h3>Güncelleme ve İletişim</h3>
+          <p>
+            Gizlilik politikası gerektiğinde güncellenebilir. Güncellemeler
+            bu sayfada yayınlanır. Sorular için iletişim sayfasındaki kanallardan
+            ulaşabilirsiniz.
+          </p>
+        </section>
+      </main>
+      <footer>
+        <div>
+          © <span id="footerYear"></span> Made with
+          <span style="color: #e0245e">&#10084;</span> by yektaulas
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
