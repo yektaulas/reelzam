@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog - Maaş &amp; Kur Hesaplayıcı</title>
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Maaş, enfasyon, alım gücü ve kariyer yönetimi üzerine güncel yazılar ve rehberler."
+    />
+    <meta name="author" content="Yekta Ulaş Kesik" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://yektaulas.com/maas-kur-hesaplayici/blog" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="main-card">
+        <header class="page-header">
+          <h1>Blog</h1>
+          <p>Maaş, kariyer ve finansal okuryazarlık üzerine notlar.</p>
+        </header>
+        <nav class="page-nav" aria-label="Sayfa bağlantıları">
+          <a href="../index.html">Hesaplayıcı</a>
+          <a href="../about.html">Hakkında</a>
+          <a href="../privacy.html">Gizlilik</a>
+        </nav>
+        <div class="content-grid">
+            <section class="card info-card">
+                <h2 style="margin-bottom: 12px;"><a href="maas-gorusmelerinde-dikkat-edilmesi-gerekenler.html" style="text-decoration: none; color: inherit;">Maaş Görüşmelerinde Dikkat Edilmesi Gerekenler</a></h2>
+                <p>Yeni bir işe başlarken veya zam döneminde masaya güçlü oturmak için bilmeniz gereken stratejiler ve hazırlık süreci.</p>
+                <a href="maas-gorusmelerinde-dikkat-edilmesi-gerekenler.html" class="calculate-btn" style="display: inline-block; text-align: center; margin-top: 10px; width: auto; padding: 8px 16px; font-size: 0.9rem;">Okumaya Başla &rarr;</a>
+            </section>
+
+            <section class="card info-card">
+                <h2 style="margin-bottom: 12px;"><a href="enflasyon-ve-alim-gucu-nedir.html" style="text-decoration: none; color: inherit;">Enflasyon ve Alım Gücü Nedir?</a></h2>
+                <p>Maaşınız artıyor ama alabilecekleriniz azalıyor mu? Reel maaş kavramını ve enflasyonun cebinize etkisini açıklıyoruz.</p>
+                <a href="enflasyon-ve-alim-gucu-nedir.html" class="calculate-btn" style="display: inline-block; text-align: center; margin-top: 10px; width: auto; padding: 8px 16px; font-size: 0.9rem;">Okumaya Başla &rarr;</a>
+            </section>
+
+            <section class="card info-card">
+                <h2 style="margin-bottom: 12px;"><a href="brut-net-maas-farki.html" style="text-decoration: none; color: inherit;">Brüt ve Net Maaş Arasındaki Farklar</a></h2>
+                <p>Teklif edilen brüt maaş elinize ne kadar geçecek? Vergi dilimleri ve kesintilerin maaşınıza etkisi hakkında detaylı rehber.</p>
+                <a href="brut-net-maas-farki.html" class="calculate-btn" style="display: inline-block; text-align: center; margin-top: 10px; width: auto; padding: 8px 16px; font-size: 0.9rem;">Okumaya Başla &rarr;</a>
+            </section>
+        </div>
+      </main>
+      <footer>
+        <div style="margin-top: 2rem;">
+          © <span id="footerYear"></span> Made with
+          <span style="color: #e0245e">&#10084;</span> by yektaulas
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
